@@ -1,10 +1,14 @@
 import React from "react";
 import Header from "../../Componets/Header/header";
+import Testimonials from "../../Componets/Testimonials/testimonials";
 
 const Home = () => {
   return (
     <>
-    <Header/>
+      <Header />
+      <div className="pt-18">
+        <Testimonials />
+      </div>
     </>
   );
 };
