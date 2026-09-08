@@ -151,148 +151,150 @@ const Testimonials = () => {
   };
 
   return (
-    <section
-      id="testimonials"
-      className="bg-white px-6 py-36 dark:bg-gray-950 lg:px-10"
-    >
+    <>
       <Header />
-      <div className="mx-auto max-w-[1200px]">
-        {/* ================= SECTION HEADING ================= */}
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
-            What Our Customers Say
-          </h2>
-          <p className="mt-3 text-gray-600 dark:text-gray-400">
-            Real experiences from people who chose Suna Motors
-          </p>
+      <section
+        id="testimonials"
+        className="bg-white px-6 py-28 dark:bg-gray-950 lg:px-10"
+      >
+        <div className="mx-auto max-w-[1200px]">
+          {/* ================= SECTION HEADING ================= */}
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+              What Our Customers Say
+            </h2>
+            <p className="mt-3 text-gray-600 dark:text-gray-400">
+              Real experiences from people who chose Suna Motors
+            </p>
 
-          <div className="mt-6 flex flex-col items-center gap-2">
-            <span className="text-4xl font-bold text-orange-600 dark:text-orange-500">
-              {average.toFixed(1)} / 5
-            </span>
-            <StarRating rating={Math.round(average)} size={20} />
-            <span className="text-sm text-gray-500 dark:text-gray-400">
-              Based on {testimonials.length} review
-              {testimonials.length !== 1 && "s"}
-            </span>
+            <div className="mt-6 flex flex-col items-center gap-2">
+              <span className="text-4xl font-bold text-orange-600 dark:text-orange-500">
+                {average.toFixed(1)} / 5
+              </span>
+              <StarRating rating={Math.round(average)} size={20} />
+              <span className="text-sm text-gray-500 dark:text-gray-400">
+                Based on {testimonials.length} review
+                {testimonials.length !== 1 && "s"}
+              </span>
+            </div>
           </div>
-        </div>
 
-        {/* ================= REVIEW CARDS ================= */}
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((t) => (
-            <div
-              key={t.id}
-              className="relative flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
-            >
-              <Quote className="absolute right-5 top-5 h-6 w-6 text-orange-100 dark:text-orange-950" />
+          {/* ================= REVIEW CARDS ================= */}
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {testimonials.map((t) => (
+              <div
+                key={t.id}
+                className="relative flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md dark:border-gray-800 dark:bg-gray-900"
+              >
+                <Quote className="absolute right-5 top-5 h-6 w-6 text-orange-100 dark:text-orange-950" />
 
-              <StarRating rating={t.rating} />
+                <StarRating rating={t.rating} />
 
-              <p className="mt-4 flex-1 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
-                "{t.text}"
-              </p>
+                <p className="mt-4 flex-1 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                  "{t.text}"
+                </p>
 
-              <div className="mt-6 flex items-center gap-3 border-t border-gray-100 pt-4 dark:border-gray-800">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-100 text-sm font-semibold text-orange-700 dark:bg-orange-950 dark:text-orange-400">
-                  {initials(t.name)}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-gray-900 dark:text-white">
-                    {t.name}
-                  </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-500">
-                    {formatDate(t.date)}
-                  </p>
+                <div className="mt-6 flex items-center gap-3 border-t border-gray-100 pt-4 dark:border-gray-800">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-100 text-sm font-semibold text-orange-700 dark:bg-orange-950 dark:text-orange-400">
+                    {initials(t.name)}
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                      {t.name}
+                    </p>
+                    <p className="text-xs text-gray-500 dark:text-gray-500">
+                      {formatDate(t.date)}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* ================= SUBMISSION FORM ================= */}
-        <div className="mx-auto mt-16 max-w-xl rounded-2xl border border-gray-200 bg-gray-50 p-8 dark:border-gray-800 dark:bg-gray-900">
-          <h3 className="text-center text-lg font-bold text-gray-900 dark:text-white">
-            Share Your Experience
-          </h3>
+          {/* ================= SUBMISSION FORM ================= */}
+          <div className="mx-auto mt-16 max-w-xl rounded-2xl border border-gray-200 bg-gray-50 p-8 dark:border-gray-800 dark:bg-gray-900">
+            <h3 className="text-center text-lg font-bold text-gray-900 dark:text-white">
+              Share Your Experience
+            </h3>
 
-          <form
-            onSubmit={handleSubmit}
-            className="mt-6 flex flex-col gap-5"
-            noValidate
-          >
-            {/* Name */}
-            <div>
-              <label
-                htmlFor="testimonial-name"
-                className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300"
-              >
-                Your name
-              </label>
-              <input
-                id="testimonial-name"
-                type="text"
-                value={form.name}
-                onChange={(e) =>
-                  setForm((f) => ({ ...f, name: e.target.value }))
-                }
-                placeholder="e.g. Jane Wambui"
-                className="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 outline-none transition-colors duration-200 focus:border-orange-500 dark:border-gray-700 dark:bg-gray-950 dark:text-white"
-              />
-              {errors.name && (
-                <p className="mt-1 text-xs text-red-500">{errors.name}</p>
-              )}
-            </div>
-
-            {/* Rating */}
-            <div>
-              <label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                Your rating
-              </label>
-              <StarInput
-                value={form.rating}
-                onChange={(rating) => setForm((f) => ({ ...f, rating }))}
-              />
-              {errors.rating && (
-                <p className="mt-1 text-xs text-red-500">{errors.rating}</p>
-              )}
-            </div>
-
-            {/* Experience */}
-            <div>
-              <label
-                htmlFor="testimonial-text"
-                className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300"
-              >
-                Your experience
-              </label>
-              <textarea
-                id="testimonial-text"
-                rows={4}
-                value={form.text}
-                onChange={(e) =>
-                  setForm((f) => ({ ...f, text: e.target.value }))
-                }
-                placeholder="Tell us how your visit to Suna Motors went..."
-                className="w-full resize-none rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 outline-none transition-colors duration-200 focus:border-orange-500 dark:border-gray-700 dark:bg-gray-950 dark:text-white"
-              />
-              {errors.text && (
-                <p className="mt-1 text-xs text-red-500">{errors.text}</p>
-              )}
-            </div>
-
-            <button
-              type="submit"
-              disabled={submitting}
-              className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-orange-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-orange-700 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-70 dark:bg-orange-500 dark:hover:bg-orange-600"
+            <form
+              onSubmit={handleSubmit}
+              className="mt-6 flex flex-col gap-5"
+              noValidate
             >
-              {submitting && <Loader2 size={16} className="animate-spin" />}
-              {submitting ? "Submitting..." : "Submit Testimonial"}
-            </button>
-          </form>
+              {/* Name */}
+              <div>
+                <label
+                  htmlFor="testimonial-name"
+                  className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  Your name
+                </label>
+                <input
+                  id="testimonial-name"
+                  type="text"
+                  value={form.name}
+                  onChange={(e) =>
+                    setForm((f) => ({ ...f, name: e.target.value }))
+                  }
+                  placeholder="e.g. Jane Wambui"
+                  className="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 outline-none transition-colors duration-200 focus:border-orange-500 dark:border-gray-700 dark:bg-gray-950 dark:text-white"
+                />
+                {errors.name && (
+                  <p className="mt-1 text-xs text-red-500">{errors.name}</p>
+                )}
+              </div>
+
+              {/* Rating */}
+              <div>
+                <label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Your rating
+                </label>
+                <StarInput
+                  value={form.rating}
+                  onChange={(rating) => setForm((f) => ({ ...f, rating }))}
+                />
+                {errors.rating && (
+                  <p className="mt-1 text-xs text-red-500">{errors.rating}</p>
+                )}
+              </div>
+
+              {/* Experience */}
+              <div>
+                <label
+                  htmlFor="testimonial-text"
+                  className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
+                  Your experience
+                </label>
+                <textarea
+                  id="testimonial-text"
+                  rows={4}
+                  value={form.text}
+                  onChange={(e) =>
+                    setForm((f) => ({ ...f, text: e.target.value }))
+                  }
+                  placeholder="Tell us how your visit to Suna Motors went..."
+                  className="w-full resize-none rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 outline-none transition-colors duration-200 focus:border-orange-500 dark:border-gray-700 dark:bg-gray-950 dark:text-white"
+                />
+                {errors.text && (
+                  <p className="mt-1 text-xs text-red-500">{errors.text}</p>
+                )}
+              </div>
+
+              <button
+                type="submit"
+                disabled={submitting}
+                className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-orange-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-orange-700 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-70 dark:bg-orange-500 dark:hover:bg-orange-600"
+              >
+                {submitting && <Loader2 size={16} className="animate-spin" />}
+                {submitting ? "Submitting..." : "Submit Testimonial"}
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
