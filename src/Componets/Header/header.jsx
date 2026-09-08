@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import {
-  Settings,
-  Sun,
-  Moon,
-  Menu,
-  X,
-} from "lucide-react";
+import { Settings, Sun, Moon, Menu, X } from "lucide-react";
 
 import logo from "../../assets/Logos/logo.png";
 
@@ -44,13 +38,11 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 z-50 w-full  border-b border-gray-200 bg-white/95 backdrop-blur-md transition-colors duration-300 dark:border-gray-800 dark:bg-gray-950/95 font-semibold">
-
       <div className="mx-auto flex h-18 max-w-[1600px] items-center justify-between px-6 lg:px-10">
-
         {/* ================= LOGO ================= */}
         <Link
           to="/"
-          className="flex shrink-0 items-center h-16 w-25 rounded-lg transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 overflow-hidden" 
+          className="flex shrink-0 items-center h-16 w-25 rounded-lg transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 overflow-hidden"
         >
           <img
             src={logo}
@@ -59,10 +51,8 @@ const Header = () => {
           />
         </Link>
 
-
         {/* ================= DESKTOP NAV ================= */}
         <nav className="hidden items-center gap-1 xl:flex">
-
           {navs.map((nav) => {
             const active = location.pathname === nav.path;
 
@@ -85,13 +75,10 @@ const Header = () => {
               </Link>
             );
           })}
-
         </nav>
-
 
         {/* ================= RIGHT ACTIONS ================= */}
         <div className="hidden items-center gap-2 xl:flex">
-
           {/* Settings */}
           <button
             type="button"
@@ -111,7 +98,6 @@ const Header = () => {
             <Settings size={19} />
           </button>
 
-
           {/* Dark Mode */}
           <button
             type="button"
@@ -129,13 +115,8 @@ const Header = () => {
               dark:hover:text-orange-400
             "
           >
-            {darkMode ? (
-              <Sun size={19} />
-            ) : (
-              <Moon size={19} />
-            )}
+            {darkMode ? <Sun size={19} /> : <Moon size={19} />}
           </button>
-
 
           {/* Login */}
           <Link
@@ -160,7 +141,6 @@ const Header = () => {
             Login
           </Link>
 
-
           {/* Sell Vehicle */}
           <Link
             to="/sell"
@@ -182,9 +162,7 @@ const Header = () => {
           >
             Sell Vehicle
           </Link>
-
         </div>
-
 
         {/* ================= MOBILE MENU BUTTON ================= */}
         <button
@@ -200,15 +178,9 @@ const Header = () => {
             xl:hidden
           "
         >
-          {mobileMenu ? (
-            <X size={24} />
-          ) : (
-            <Menu size={24} />
-          )}
+          {mobileMenu ? <X size={24} /> : <Menu size={24} />}
         </button>
-
       </div>
-
 
       {/* ================= MOBILE NAV ================= */}
       {mobileMenu && (
@@ -223,9 +195,7 @@ const Header = () => {
             xl:hidden
           "
         >
-
           <nav className="flex flex-col gap-1">
-
             {navs.map((nav) => {
               const active = location.pathname === nav.path;
 
@@ -249,13 +219,10 @@ const Header = () => {
                 </Link>
               );
             })}
-
           </nav>
-
 
           {/* Mobile actions */}
           <div className="mt-4 flex items-center gap-2 border-t border-gray-200 pt-4 dark:border-gray-800">
-
             {/* Settings */}
             <button
               type="button"
@@ -271,7 +238,6 @@ const Header = () => {
               <Settings size={19} />
             </button>
 
-
             {/* Theme */}
             <button
               type="button"
@@ -285,13 +251,8 @@ const Header = () => {
                 dark:hover:bg-gray-800
               "
             >
-              {darkMode ? (
-                <Sun size={19} />
-              ) : (
-                <Moon size={19} />
-              )}
+              {darkMode ? <Sun size={19} /> : <Moon size={19} />}
             </button>
-
 
             <Link
               to="/login"
@@ -322,12 +283,9 @@ const Header = () => {
             >
               Sell Vehicle
             </Link>
-
           </div>
-
         </div>
       )}
-
     </header>
   );
 };
