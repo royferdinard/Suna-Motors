@@ -102,10 +102,10 @@ const Header = () => {
               text-gray-600
               transition-all duration-300
               hover:bg-gray-100
-              hover:text-blue-700
+              hover:text-orange-700
               dark:text-gray-300
               dark:hover:bg-gray-800
-              dark:hover:text-blue-400
+              dark:hover:text-orange-400
             "
           >
             <Settings size={19} />
@@ -123,10 +123,10 @@ const Header = () => {
               text-gray-600
               transition-all duration-300
               hover:bg-gray-100
-              hover:text-blue-700
+              hover:text-orange-700
               dark:text-gray-300
               dark:hover:bg-gray-800
-              dark:hover:text-yellow-400
+              dark:hover:text-orange-400
             "
           >
             {darkMode ? (
