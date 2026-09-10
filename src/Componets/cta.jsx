@@ -7,7 +7,6 @@ const Cta = () => {
   return (
     <section className="">
       <div className="w-full">
-
         <div
           className="
             relative
@@ -17,7 +16,6 @@ const Cta = () => {
             shadow-2xl
           "
         >
-
           {/* ================= BACKGROUND IMAGE ================= */}
           <div className="absolute inset-0">
             <img
@@ -57,7 +55,6 @@ const Cta = () => {
             />
           </div>
 
-
           {/* ================= CONTENT ================= */}
           <div
             className="
@@ -71,9 +68,7 @@ const Cta = () => {
               px-12
             "
           >
-
             <div className="max-w-2xl">
-
               {/* Small Label
               <div className="mb-5 flex items-center gap-3">
 
@@ -105,7 +100,6 @@ const Cta = () => {
 
               </div> */}
 
-
               {/* Heading */}
               <h1
                 className="
@@ -123,7 +117,6 @@ const Cta = () => {
                 </span>
               </h1>
 
-
               {/* Description */}
               <p
                 className="
@@ -135,37 +128,26 @@ const Cta = () => {
                   sm:text-base
                 "
               >
-                Explore our carefully selected collection of quality
-                pre-owned vehicles. From reliable family cars to powerful
-                SUVs, find your next vehicle at Suna Motors.
+                Explore our carefully selected collection of quality pre-owned
+                vehicles. From reliable family cars to powerful SUVs, find your
+                next vehicle at Suna Motors.
               </p>
-
 
               {/* Trust Points */}
               <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
-
                 <div className="flex items-center gap-2 text-sm text-white/80">
-                  <ShieldCheck
-                    size={17}
-                    className="text-orange-500"
-                  />
+                  <ShieldCheck size={17} className="text-orange-500" />
                   Quality Checked
                 </div>
 
                 <div className="flex items-center gap-2 text-sm text-white/80">
-                  <CarFront
-                    size={17}
-                    className="text-orange-500"
-                  />
+                  <CarFront size={17} className="text-orange-500" />
                   Wide Selection
                 </div>
-
               </div>
-
 
               {/* ================= BUTTONS ================= */}
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-
                 {/* View Vehicles */}
                 <Link
                   to="/vehicles"
@@ -192,7 +174,6 @@ const Cta = () => {
                   "
                 >
                   View Vehicles
-
                   <ArrowRight
                     size={18}
                     className="
@@ -202,7 +183,6 @@ const Cta = () => {
                     "
                   />
                 </Link>
-
 
                 {/* Contact */}
                 <Link
@@ -230,15 +210,11 @@ const Cta = () => {
                   "
                 >
                   <Phone size={17} />
-
                   Contact Us
                 </Link>
-
               </div>
-
             </div>
           </div>
-
 
           {/* ================= ORANGE DECORATION ================= */}
           <div
@@ -280,9 +256,7 @@ const Cta = () => {
               border-orange-500/20
             "
           />
-
         </div>
-
       </div>
     </section>
   );
