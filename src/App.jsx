@@ -4,7 +4,7 @@ import { Toaster } from "react-hot-toast";
 // Pages
 import Home from "./Pages/Web-Pages/home";
 import About from "./Pages/Web-Pages/About";
-import Testimonials from "./Componets/Testimonials/testimonials";
+import Testimonials from "./Componets/Testimonials/Testimonials";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/testimonials" element={<Testimonials />} />
+        <Route path="/Testimonials" element={<Testimonials />} />
       </Routes>
     </BrowserRouter>
   );
