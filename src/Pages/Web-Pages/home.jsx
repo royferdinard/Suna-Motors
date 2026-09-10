@@ -12,6 +12,7 @@ import Testimonials from "../../Componets/Testimonials/testimonials";
 const Home = () => {
   return (
     <>
+      <Header />
     <div className="">
       <Header/>
     <Hero/>
