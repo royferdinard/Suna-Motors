@@ -7,7 +7,7 @@ import Contact from "./Pages/Web-Pages/contact";
 import Help from "./Pages/Web-Pages/help";
 
 import About from "./Pages/Web-Pages/About";
-import Testimonials from "./Componets/Testimonials/testimonials";
+import Testimonials from "./Componets/Testimonials/Testimonials";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/help" element={<Help />} />
         <Route path="/about" element={<About />} />
-        <Route path="/testimonials" element={<Testimonials />} />
+        <Route path="/Testimonials" element={<Testimonials />} />
       </Routes>
     </BrowserRouter>
   );
