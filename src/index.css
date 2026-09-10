@@ -8,6 +8,7 @@ body {
   padding: 0;
   margin: 0;
 }
+body::-webkit-scrollbar{
 body::-webkit-scrollbar {
   width: 0.3rem;
 }
