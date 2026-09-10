@@ -7,8 +7,8 @@ import WhyChooseUs from "../../Componets/About/WhyChooseUs";
 import Values from "../../Componets/About/Values";
 import BuyingProcess from "../../Componets/About/BuyingProcess";
 import Testimonials from "../../Componets/About/Testimonials";
-import AboutCTA from "../../Componets/About/AboutCTA";
-
+import Cta from "../../Componets/cta";
+import Footer from "../../Componets/footer";
 const About = () => {
   return (
     <>
@@ -21,8 +21,9 @@ const About = () => {
         <Values />
         <BuyingProcess />
         <Testimonials />
-        <AboutCTA />
+        <Cta />
       </main>
+      <Footer />
     </>
   );
 };
