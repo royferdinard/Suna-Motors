@@ -17,6 +17,7 @@ const Home = () => {
     <>
       <Header />
       <div className="">
+        <Header />
         <Hero />
         <PaymentOption />
         <TopCars />
