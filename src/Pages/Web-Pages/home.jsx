@@ -8,27 +8,26 @@ import WhyChooseUs from "../../Componets/whyChooseUs";
 import FeaturedMakes from "../../Componets/featuredMakes";
 import BestModels from "../../Componets/topModels";
 import TrendingCategories from "../../Componets/trendingCategory";
-
->>>>>>> Stashed changes
+import Testimonials from "../../Componets/Testimonials/Testimonials";
+import Cta from "../../Componets/cta";
+import Footer from "../../Componets/footer";
 
 const Home = () => {
   return (
     <>
-<<<<<<< Updated upstream
-=======
-    <Header />
->>>>>>> Stashed changes
-    <div className="">
-    <Hero/>
-    <PaymentOption/>
-    <TopCars/>
-    <WhyChooseUs/>
-    <FeaturedMakes/>
-    <BestModels/>
-    <TrendingCategories/>
-    <Cta/>
-    <Footer/>
-    </div>
+      <Header />
+      <div className="">
+        <Hero />
+        <PaymentOption />
+        <TopCars />
+        <WhyChooseUs />
+        <FeaturedMakes />
+        <BestModels />
+        <TrendingCategories />
+        <Testimonials />
+        <Cta />
+        <Footer />
+      </div>
     </>
   );
 };
