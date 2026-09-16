@@ -23,7 +23,7 @@ const FeaturedMakeStore= [
         vehicles: "12 Vehicles",
     },
     {
-        name:"Demio",
+        name:"Mazda",
         image:demio,
         desc:"This is a luxury car make for personal, and bussiness use. It can also be use for driving practises.",
         models: ["Demio", "Mazda 2", "Mazda 3"],

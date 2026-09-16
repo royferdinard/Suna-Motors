@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 import logo from "../assets/Logos/logo.png";
-import { FaAngleRight, FaFacebook,FaInstagram,FaTwitter,FaYoutube } from "react-icons/fa";
+import { FaAngleRight, FaFacebook,FaInstagram,FaTiktok,FaTwitter,FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   const quickLinks = [
@@ -80,6 +80,11 @@ const Footer = () => {
       icon: FaYoutube,
       path: "#",
     },
+    {
+      name: "TikTok",
+      icon: FaTiktok,
+      path: "#",
+    },
   ];
 
   return (
@@ -99,9 +104,6 @@ const Footer = () => {
           "
         >
 
-          {/* =================================================
-              1. BRAND
-          ================================================== */}
           <div className="lg:pr-6">
 
             {/* Logo */}
@@ -166,9 +168,6 @@ const Footer = () => {
           </div>
 
 
-          {/* =================================================
-              2. QUICK LINKS
-          ================================================== */}
           <div>
 
             <h3 className=" text-2xl font-bold text-white">
@@ -219,9 +218,6 @@ const Footer = () => {
           </div>
 
 
-          {/* =================================================
-              3. OTHER LINKS
-          ================================================== */}
           <div>
 
             <h3 className="text-2xl font-bold text-white ">
@@ -272,9 +268,6 @@ const Footer = () => {
           </div>
 
 
-          {/* =================================================
-              4. NEWSLETTER
-          ================================================== */}
           <div>
 
             <h3 className="text-2xl font-bold text-white">
@@ -355,15 +348,8 @@ const Footer = () => {
         </div>
 
 
-        {/* =====================================================
-            DIVIDER
-        ====================================================== */}
         <div className="my-8 h-px bg-white/10"></div>
 
-
-        {/* =====================================================
-            BOTTOM FOOTER
-        ====================================================== */}
         <div
           className="
             flex
