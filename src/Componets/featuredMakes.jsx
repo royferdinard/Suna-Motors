@@ -166,10 +166,10 @@ const FeaturedMakes = () => {
               top-0
               z-10
               h-full
-              w-8
+              w-2.5
               bg-gradient-to-r
-              from-gray-100
-              to-gray-50/0
+              from-gray-100/80
+              to-gray-50/5
             "
           />
 
@@ -182,10 +182,10 @@ const FeaturedMakes = () => {
               top-0
               z-10
               h-full
-              w-8
+              w-2.5
               bg-gradient-to-l
-              from-gray-100
-              to-gray-50/0
+              from-gray-100/80
+              to-gray-50/5
             "
           />
 
