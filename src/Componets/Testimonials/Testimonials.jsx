@@ -9,9 +9,10 @@ import TestimonialCard from "./Testimonialcard";
 import TestimonialForm from "./Testimonialform";
 import EmptyState from "./Emptystate";
 import Toast from "./Toast";
-import CTA from "./Cta";
+import Cta from "../cta";
 import TrustStats from "./Truststats";
 import Header from "../Header/header";
+import Footer from "../footer";
 
 const gridContainer = {
   hidden: {},
@@ -132,13 +133,15 @@ const Testimonials = () => {
         </div>
       </section>
 
-      <CTA />
+      <Cta />
 
       <TestimonialForm
         isOpen={isFormOpen}
         onClose={() => setIsFormOpen(false)}
         onSubmit={handleAddTestimonial}
       />
+
+      <Footer />
     </>
   );
 };
