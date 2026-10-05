@@ -1,16 +1,19 @@
 import defaultVehicles from "../Data/vehicles";
 
 const STORAGE_KEY = "suna_motors_vehicles";
+export const VEHICLES_UPDATED_EVENT = "suna-motors-vehicles-updated";
 
 export const getVehicles = () => {
-  const storedVehicles = localStorage.getItem(STORAGE_KEY);
-
-  if (!storedVehicles) {
-    return defaultVehicles;
-  }
-
   try {
-    return JSON.parse(storedVehicles);
+    const storedVehicles = localStorage.getItem(STORAGE_KEY);
+
+    if (storedVehicles === null) {
+      return defaultVehicles;
+    }
+
+    const parsedVehicles = JSON.parse(storedVehicles);
+
+    return Array.isArray(parsedVehicles) ? parsedVehicles : defaultVehicles;
   } catch (error) {
     console.error("Failed to load vehicles:", error);
     return defaultVehicles;
@@ -18,17 +21,27 @@ export const getVehicles = () => {
 };
 
 export const saveVehicles = (vehicles) => {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(vehicles));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(vehicles));
+
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new Event(VEHICLES_UPDATED_EVENT));
+    }
+
+    return true;
+  } catch (error) {
+    console.error("Failed to save vehicles:", error);
+    return false;
+  }
 };
 
 export const addVehicle = (vehicle) => {
   const currentVehicles = getVehicles();
-
   const updatedVehicles = [...currentVehicles, vehicle];
 
-  saveVehicles(updatedVehicles);
+  const saved = saveVehicles(updatedVehicles);
 
-  return updatedVehicles;
+  return saved ? updatedVehicles : currentVehicles;
 };
 
 export const updateVehicle = (vehicleId, updatedVehicle) => {
@@ -44,9 +57,9 @@ export const updateVehicle = (vehicleId, updatedVehicle) => {
       : vehicle,
   );
 
-  saveVehicles(updatedVehicles);
+  const saved = saveVehicles(updatedVehicles);
 
-  return updatedVehicles;
+  return saved ? updatedVehicles : currentVehicles;
 };
 
 export const deleteVehicle = (vehicleId) => {
@@ -56,7 +69,7 @@ export const deleteVehicle = (vehicleId) => {
     (vehicle) => Number(vehicle.id) !== Number(vehicleId),
   );
 
-  saveVehicles(updatedVehicles);
+  const saved = saveVehicles(updatedVehicles);
 
-  return updatedVehicles;
+  return saved ? updatedVehicles : currentVehicles;
 };

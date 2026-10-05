@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,10 +7,29 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
-import vehicles from "../../Data/vehicles";
+import {
+  getVehicles,
+  VEHICLES_UPDATED_EVENT,
+} from "../../utils/vehicleStorage";
 
 const CompareModels = () => {
   const [searchParams] = useSearchParams();
+
+  const [vehicles, setVehicles] = useState(() => getVehicles());
+
+  useEffect(() => {
+    const refreshVehicles = () => {
+      setVehicles(getVehicles());
+    };
+
+    window.addEventListener(VEHICLES_UPDATED_EVENT, refreshVehicles);
+    window.addEventListener("storage", refreshVehicles);
+
+    return () => {
+      window.removeEventListener(VEHICLES_UPDATED_EVENT, refreshVehicles);
+      window.removeEventListener("storage", refreshVehicles);
+    };
+  }, []);
 
   const ids = searchParams.get("vehicles")?.split(",") || [];
 
@@ -26,7 +45,7 @@ const CompareModels = () => {
     {
       label: "Price",
       key: "price",
-      format: (value) => `KSh ${value.toLocaleString()}`,
+      format: (value) => `KSh ${Number(value || 0).toLocaleString()}`,
     },
     {
       label: "Mileage",
@@ -115,11 +134,17 @@ const CompareModels = () => {
                       <th key={vehicle.id} className="min-w-[220px] p-5">
                         <div className="overflow-hidden rounded-xl border border-gray-200 dark:border-white/10">
                           <div className="aspect-[16/10] overflow-hidden">
-                            <img
-                              src={vehicle.images?.[0]}
-                              alt={vehicle.name}
-                              className="h-full w-full object-cover"
-                            />
+                            {vehicle.images?.[0] ? (
+                              <img
+                                src={vehicle.images[0]}
+                                alt={vehicle.name}
+                                className="h-full w-full object-cover"
+                              />
+                            ) : (
+                              <div className="flex h-full items-center justify-center bg-gray-100 text-sm text-gray-400 dark:bg-gray-800">
+                                No Image
+                              </div>
+                            )}
                           </div>
 
                           <div className="p-4">
@@ -158,14 +183,16 @@ const CompareModels = () => {
                             key={vehicle.id}
                             className="p-5 text-sm text-gray-600 dark:text-gray-400"
                           >
-                            {feature.format ? feature.format(value) : value}
+                            {feature.format
+                              ? feature.format(value)
+                              : value || "—"}
                           </td>
                         );
                       })}
                     </tr>
                   ))}
 
-                  {/* Features */}
+                  {/* Highlights */}
                   <tr>
                     <td className="p-5 align-top text-sm font-semibold text-gray-700 dark:text-gray-300">
                       Highlights

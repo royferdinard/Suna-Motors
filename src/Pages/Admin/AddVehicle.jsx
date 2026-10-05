@@ -89,15 +89,19 @@ const AddVehicle = () => {
   const generateVehicleId = () => {
     const vehicles = getVehicles();
 
-    if (vehicles.length === 0) {
-      return 1;
+    const usedIds = new Set(
+      vehicles
+        .map((vehicle) => Number(vehicle.id))
+        .filter((id) => Number.isSafeInteger(id) && id > 0),
+    );
+
+    let newId = 1;
+
+    while (usedIds.has(newId)) {
+      newId += 1;
     }
 
-    const ids = vehicles
-      .map((vehicle) => Number(vehicle.id))
-      .filter((id) => Number.isFinite(id));
-
-    return Math.max(...ids, 0) + 1;
+    return newId;
   };
 
   /*

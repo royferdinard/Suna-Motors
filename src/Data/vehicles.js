@@ -1,6 +1,6 @@
 import blackHarrier1 from "../assets/Images/Vehicles/blackHarrier.jpg";
 import blackHarrier2 from "../assets/Images/Vehicles/blackHarrier2.jpg";
-import blackHarrier3 from "../assets/Images/Vehicles/blackHarrier2.jpg";
+import blackHarrier3 from "../assets/Images/Vehicles/harrierblack3.jpeg";
 import blackHarrier4 from "../assets/Images/Vehicles/blackharrier4.jpeg";
 import blackHarrier5 from "../assets/Images/Vehicles/blackharrier5.jpeg";
 import blackHarrier6 from "../assets/Images/Vehicles/blackharrier6.jpeg";

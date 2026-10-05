@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import ModelsHero from "../../Componets/Models/ModelsHero";
@@ -6,19 +6,37 @@ import CategoryTabs from "../../Componets/Models/CategoryTabs";
 import ModelSearchFilter from "../../Componets/Models/ModelSearchFilter";
 import ModelGrid from "../../Componets/Models/ModelGrid";
 
-import vehicles from "../../Data/vehicles";
+import {
+  getVehicles,
+  VEHICLES_UPDATED_EVENT,
+} from "../../utils/vehicleStorage";
+
 import Header from "../../Componets/Header/header";
 import Footer from "../../Componets/footer";
 import Cta from "../../Componets/cta";
 
 const Models = () => {
   const [activeCategory, setActiveCategory] = useState("All Vehicles");
+  const [search, setSearch] = useState("");
+  const [compareVehicles, setCompareVehicles] = useState([]);
+
+  const [vehicles, setVehicles] = useState(() => getVehicles());
 
   const navigate = useNavigate();
 
-  const [search, setSearch] = useState("");
+  useEffect(() => {
+    const refreshVehicles = () => {
+      setVehicles(getVehicles());
+    };
 
-  const [compareVehicles, setCompareVehicles] = useState([]);
+    window.addEventListener(VEHICLES_UPDATED_EVENT, refreshVehicles);
+    window.addEventListener("storage", refreshVehicles);
+
+    return () => {
+      window.removeEventListener(VEHICLES_UPDATED_EVENT, refreshVehicles);
+      window.removeEventListener("storage", refreshVehicles);
+    };
+  }, []);
 
   const handleCompareChange = (vehicle) => {
     setCompareVehicles((prev) => {
@@ -66,12 +84,10 @@ const Models = () => {
 
   const filteredVehicles = useMemo(() => {
     return vehicles.filter((vehicle) => {
-      // Category
       const matchesCategory =
         activeCategory === "All Vehicles" ||
         vehicle.category === activeCategory;
 
-      // Search
       const searchTerm = search.toLowerCase().trim();
 
       const matchesSearch =
@@ -80,13 +96,11 @@ const Models = () => {
         vehicle.brand?.toLowerCase().includes(searchTerm) ||
         vehicle.category?.toLowerCase().includes(searchTerm);
 
-      // Brand
       const matchesBrand =
         !selectedFilters.Brand ||
         selectedFilters.Brand === "All Brands" ||
         vehicle.brand === selectedFilters.Brand;
 
-      // Price
       let matchesPrice = true;
 
       if (selectedFilters.Price === "Under KSh 2M") {
@@ -105,19 +119,16 @@ const Models = () => {
         matchesPrice = vehicle.price > 10000000;
       }
 
-      // Year
       const matchesYear =
         !selectedFilters.Year ||
         selectedFilters.Year === "Any Year" ||
         vehicle.year === Number(selectedFilters.Year);
 
-      // Fuel
       const matchesFuel =
         !selectedFilters.Fuel ||
         selectedFilters.Fuel === "Any Fuel" ||
         vehicle.fuel === selectedFilters.Fuel;
 
-      // Transmission
       const matchesTransmission =
         !selectedFilters.Transmission ||
         selectedFilters.Transmission === "Any Transmission" ||
@@ -133,11 +144,12 @@ const Models = () => {
         matchesTransmission
       );
     });
-  }, [activeCategory, search, selectedFilters]);
+  }, [vehicles, activeCategory, search, selectedFilters]);
 
   return (
     <main>
       <Header />
+
       <ModelsHero />
 
       <CategoryTabs
@@ -163,7 +175,6 @@ const Models = () => {
         <div className="fixed inset-x-0 bottom-0 z-50 px-3 pb-3 sm:px-5 sm:pb-5">
           <div className="mx-auto max-w-5xl rounded-2xl border border-gray-200 bg-white p-4 shadow-2xl dark:border-white/10 dark:bg-gray-900 sm:p-5">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-              {/* Selected vehicles */}
               <div className="min-w-0">
                 <div className="flex items-start gap-3">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-orange-600 text-sm font-bold text-white">
@@ -191,7 +202,6 @@ const Models = () => {
                 </div>
               </div>
 
-              {/* Actions */}
               <div className="flex w-full gap-2 sm:w-auto">
                 <button
                   type="button"

@@ -11,6 +11,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const ModelCard = ({ vehicle, isSelected, onCompareChange }) => {
+  const canCompare = typeof onCompareChange === "function";
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 25 }}
@@ -102,27 +104,31 @@ const ModelCard = ({ vehicle, isSelected, onCompareChange }) => {
         {/* Compare + Details */}
         <div className="mt-4 flex items-center justify-between gap-3">
           {/* Compare */}
-          <label
-            className={`inline-flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium transition-all duration-300 ${
-              isSelected
-                ? "border-orange-600 bg-orange-600 text-white"
-                : "border-gray-200 bg-white text-gray-600 hover:border-orange-600 hover:text-orange-600 dark:border-white/10 dark:bg-white/[0.03] dark:text-gray-300 dark:hover:border-orange-600 dark:hover:text-orange-600"
-            }`}
-          >
-            <input
-              type="checkbox"
-              checked={isSelected}
-              onChange={() => onCompareChange(vehicle)}
-              className="h-4 w-4 cursor-pointer accent-orange-600"
-            />
+          {canCompare && (
+            <label
+              className={`inline-flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium transition-all duration-300 ${
+                isSelected
+                  ? "border-orange-600 bg-orange-600 text-white"
+                  : "border-gray-200 bg-white text-gray-600 hover:border-orange-600 hover:text-orange-600 dark:border-white/10 dark:bg-white/[0.03] dark:text-gray-300 dark:hover:border-orange-600 dark:hover:text-orange-600"
+              }`}
+            >
+              <input
+                type="checkbox"
+                checked={Boolean(isSelected)}
+                onChange={() => onCompareChange(vehicle)}
+                className="h-4 w-4 cursor-pointer accent-orange-600"
+              />
 
-            <span>{isSelected ? "Compared" : "Compare"}</span>
-          </label>
+              <span>{isSelected ? "Compared" : "Compare"}</span>
+            </label>
+          )}
 
           {/* Details */}
           <Link
             to={`/models/${vehicle.id}`}
-            className="group/btn inline-flex items-center gap-2 rounded-lg bg-gray-950 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-orange-600 dark:bg-white dark:text-gray-950 dark:hover:bg-orange-600 dark:hover:text-white"
+            className={`group/btn inline-flex items-center gap-2 rounded-lg bg-gray-950 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-orange-600 dark:bg-white dark:text-gray-950 dark:hover:bg-orange-600 dark:hover:text-white ${
+              !canCompare ? "ml-auto" : ""
+            }`}
           >
             Details
             <FontAwesomeIcon

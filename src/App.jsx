@@ -24,6 +24,7 @@ import AdminLayout from "./Componets/Admin/AdminLayout/AdminLayout";
 import AddVehicle from "./Pages/Admin/AddVehicle";
 import EditVehicle from "./Pages/Admin/EditVehicle";
 import ViewVehicle from "./Pages/Admin/ViewVehicle";
+import Appointments from "./Pages/Admin/Appointments";
 
 function App() {
   return (
@@ -89,6 +90,15 @@ function App() {
           element={
             <AdminLayout>
               <EditVehicle />
+            </AdminLayout>
+          }
+        />
+
+        <Route
+          path="/admin/appointments"
+          element={
+            <AdminLayout>
+              <Appointments />
             </AdminLayout>
           }
         />
